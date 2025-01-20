@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            font-family: 'Questrial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .button {
+            width: 100%;
+            padding: 15px;
+            background-color: #552a2a; /* Color del negocio */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #8e4e4e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.jpeg" alt="Panadería Deliciosa"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Menú</a></li>
+                <li><a href="#">Sobre nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="deliver.html">Pedí</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Pedido</h1>
+        <form id="orderForm" action="#" method="GET" target="_blank">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="producto">Producto</label>
+            <select id="producto" name="producto" required>
+                <option value="Pizza">Pizza</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Ensalada">Ensalada</option>
+            </select>
+
+            <label for="cantidad">Cantidad</label>
+            <input type="number" id="cantidad" name="cantidad" required min="1">
+            
+            <label for="unidad">Unidad</label>
+            <select id="unidad" name="unidad" required>
+                <option value="gramos">Gramos</option>
+                <option value="kilogramos">Kilogramos</option>
+                <option value="unidad">Unidad</option>
+            </select>
+
+            <label for="opcion">Opción de Entrega</label>
+            <select id="opcion" name="opcion" required>
+                <option value="delivery">Delivery</option>
+                <option value="retiro">Retiro en el negocio</option>
+            </select>
+
+            <label for="mensaje">Comentarios adicionales</label>
+            <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+
+            <button type="submit" class="button">Enviar Pedido</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita el envío tradicional del formulario
+
+            // Obtener los valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const producto = document.getElementById('producto').value;
+            const cantidad = document.getElementById('cantidad').value;
+            const unidad = document.getElementById('unidad').value;
+            const opcion = document.getElementById('opcion').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            // Crear el mensaje predefinido para WhatsApp
+            let texto = `*Pedido de ${nombre}*\nProducto: ${producto}\nCantidad: ${cantidad} ${unidad}\nOpción de entrega: ${opcion === 'delivery' ? 'Delivery' : 'Retiro en el negocio'}`;
+            if (mensaje) {
+                texto += `\nComentarios: ${mensaje}`;
+            }
+
+            // Crear el enlace para redirigir a WhatsApp con el mensaje
+            const url = `https://wa.me/1234567890?text=${encodeURIComponent(texto)}`;
+
+            // Redirigir al usuario a la conversación de WhatsApp
+            window.open(url, '_blank');
+        });
+    </script>
+
+</body>
+</html>
