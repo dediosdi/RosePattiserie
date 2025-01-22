@@ -537,174 +537,135 @@ nav ul li a:hover {
     transform: scale(1.1); /* Efecto al pasar el mouse sobre los iconos */
 }
 
-
-
 /* Media Queries para Responsividad */
 
 /* Para pantallas de hasta 768px (móviles y tablets pequeñas) */
 @media screen and (max-width: 768px) {
     header {
-        padding: 15px 20px;
-        font-size: small;
+        padding: 10px 20px; /* Reducimos el padding */
+        font-size: 0.9em; /* Reducimos el tamaño de la fuente */
+    }
+
+    .logo img {
+        max-height: 40px; /* Reducimos el tamaño del logo */
     }
 
     nav ul {
-        flex-direction: column;
+        flex-direction: column; /* Cambiamos la dirección de los elementos en la barra de navegación */
         align-items: center;
+        margin-top: 10px; /* Añadimos un margen arriba */
     }
 
     nav ul li {
-        margin: 10px 0;
+        margin: 5px 0; /* Reducimos el espacio entre los enlaces */
     }
 
     .container {
-        flex-direction: column;
+        flex-direction: column; /* Ponemos los elementos de la página en una sola columna */
         padding: 20px;
-        height: auto;
+        height: auto; /* Hacemos que el contenedor no ocupe toda la altura de la pantalla */
     }
 
     .left-column, .right-column {
-        max-width: 100%;
+        max-width: 100%; /* Hacemos que ambas columnas ocupen el 100% del ancho */
         flex: 1;
+        margin-bottom: 20px; /* Agregamos espacio entre las columnas */
     }
 
     .left-column h1 {
-        font-size: 2.2em;
+        font-size: 2em; /* Reducimos el tamaño del título */
     }
 
     .left-column p {
-        font-size: 1.1em;
+        font-size: 1.1em; /* Reducimos el tamaño del texto */
     }
 
     .photo-album {
         flex-direction: column;
-        bottom: 10%;
+        bottom: 10%; /* Ajustamos la posición de las fotos */
+        left: 10%; /* Ajustamos la posición */
     }
 
     .cards-container {
-        flex-direction: column;
+        flex-direction: column; /* Cambiamos la dirección de las tarjetas */
         align-items: center;
     }
 
     .card {
-        width: 80%;
+        width: 80%; /* Ajustamos el tamaño de las tarjetas */
         margin: 10px 0;
     }
 
     .showcase-container {
-        flex-direction: column;
+        flex-direction: column; /* Cambiamos la dirección de los elementos */
         text-align: center;
     }
 
     .order-container {
-        width: 90%;
+        width: 90%; /* Reducimos el ancho del contenedor */
         padding: 30px;
     }
 
     .review-container {
-        flex-direction: column;
+        flex-direction: column; /* Hacemos que las reseñas se apilen */
         padding: 20px;
     }
 
     .footer-content {
-        flex-direction: column;
+        flex-direction: column; /* Cambiamos la dirección para que se acomode en pantallas pequeñas */
         align-items: center;
         text-align: center;
     }
 
     .footer-links {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: column; /* Cambiamos la dirección de los enlaces */
+        gap: 10px; /* Reducimos el espacio entre los enlaces */
+    }
+
+    .social-links {
+        margin-top: 15px; /* Espaciamos los iconos sociales */
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Ponemos el footer en una columna */
+        align-items: center;
+        text-align: center;
     }
 }
 
-/* Para pantallas de hasta 1024px (tabletas grandes y pantallas medianas) */
+/* Para pantallas de hasta 1024px (tabletas grandes y pantallas de tamaño intermedio) */
 @media screen and (max-width: 1024px) {
     header {
         padding: 15px 30px;
+        font-size: 1em;
+           
     }
 
     nav ul {
-        gap: 15px;
+        justify-content: space-between;
+        flex-direction: row;
     }
 
     .container {
-        flex-direction: column;
-        padding: 30px;
-        height: auto;
+        padding: 20px;
+        flex-direction: row;
     }
 
     .left-column, .right-column {
-        max-width: 100%;
+        max-width: 50%;
         flex: 1;
     }
 
-    .left-column h1 {
-        font-size: 2.5em;
-    }
-
-    .cards-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .card {
-        width: 45%;
-    }
-
-    .showcase-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-/* Para pantallas grandes (a partir de 1025px en adelante) */
-@media screen and (min-width: 1025px) {
-    header {
-        padding: 20px 50px;
-    }
-
-    .container {
-        padding: 50px;
-        flex-direction: row;
-    }
-
-    .left-column {
-        max-width: 50%;
-    }
-
-    .right-column {
-        max-width: 50%;
-    }
-
     .photo-album {
-        position: absolute;
-        bottom: 18%;
-        left: 43px;
-        width: 90%;
+        bottom: 15%; /* Ajustamos la posición para tabletas */
     }
 
-    .cards-container {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .card {
-        width: 200px;
-    }
-
-    .showcase-container {
-        flex-direction: row;
-        justify-content: space-between;
-        max-width: 1200px;
+    .order-container {
+        padding: 40px 30px;
     }
 
     .footer-content {
+        flex-direction: row; /* Ajustamos el footer para pantallas más grandes */
         justify-content: space-between;
     }
 }

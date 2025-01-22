@@ -34,10 +34,10 @@ const contents = [
     {
         left: `
             <h1>Delicias frescas para cada momento</h1>
-            <p>Explora nuestros panes artesanales, hechos con amor y dedicación.</p>
+            <p>Explora nuestros chipá artesanales, hechos con amor y dedicación.</p>
             <button>Descubrir Más</button>
         `,
-        rightImage: "images/makaron.png"
+        rightImage: "images/chipa.png"
     },
     {
         left: `
@@ -45,7 +45,7 @@ const contents = [
             <p>Disfruta de nuestra variedad de tartas, brownies y mucho más.</p>
             <button>Ver Postres</button>
         `,
-        rightImage: "images/chipa.png"
+        rightImage: "images/makaron.png"
     }
 ];
 
@@ -87,3 +87,14 @@ setInterval(updateContent, 10000);
 
 // Ejecutar una actualización inicial
 updateContent();
+
+
+
+
+
+
+//menu hamburguesa
+document.getElementById('hamburger').addEventListener('click', function() {
+    var menu = document.getElementById('menu');
+    menu.classList.toggle('open');
+});
