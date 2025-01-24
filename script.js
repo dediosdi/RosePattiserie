@@ -46,7 +46,16 @@ const contents = [
             <button>Ver Postres</button>
         `,
         rightImage: "images/makaron.png"
-    }
+    },  
+    {
+        left: `
+            <h1>Postres que cuentan historias</h1>
+            <p>Disfruta de nuestra variedad de tartas, brownies y mucho más.</p>
+            <button>Ver Tortas</button>
+        `,
+        rightImage: "images/tortafrutas.png"
+    },
+    
 ];
 
 let currentIndex = 0; // Índice del contenido actual
@@ -90,7 +99,109 @@ updateContent();
 
 
 
+//Galeria de miniaturas en la seccion principal
+let currentScrollPosition = 0;
+const scrollAmount = 300;
 
+function scrollGallery(direction) {
+    const gallery = document.querySelector('.album-gallery');
+    currentScrollPosition += direction * scrollAmount;
+    gallery.scrollTo({
+        left: currentScrollPosition,
+        behavior: 'smooth',
+    });
+}
+
+function expandImage(img) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("expandedImg");
+    const captionText = document.getElementById("caption");
+    
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+    captionText.innerHTML = img.alt;
+}
+
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+}
+
+
+
+
+
+//Galeria de los mejores platos
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.carousel-track');
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
+    const modal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image');
+    const closeModal = document.querySelector('.close');
+    const images = document.querySelectorAll('.gallery-img');
+
+    let currentIndex = 0; // Índice actual para el carrusel
+    const visibleCards = 4; // Número de tarjetas visibles
+    const cardWidth = document.querySelector('.card').offsetWidth + 15; // Ancho total de una tarjeta
+
+    // Control del carrusel principal
+    rightArrow.addEventListener('click', () => {
+        const maxIndex = track.children.length - visibleCards;
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }
+    });
+
+    leftArrow.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }
+    });
+
+    // Modal variables
+    let modalIndex = 0; // Índice actual para el modal
+
+    // Abrir modal al hacer clic en una imagen
+    images.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            modalIndex = index;
+            modalImage.src = img.src;
+            modal.classList.remove('hidden');
+        });
+    });
+
+    // Cerrar modal
+    closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+
+    // Cambiar imagen dentro del modal con flechas
+    document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('hidden')) {
+            if (e.key === 'ArrowRight') {
+                // Avanzar a la siguiente imagen
+                modalIndex = (modalIndex + 1) % images.length;
+                modalImage.src = images[modalIndex].src;
+            } else if (e.key === 'ArrowLeft') {
+                // Retroceder a la imagen anterior
+                modalIndex = (modalIndex - 1 + images.length) % images.length;
+                modalImage.src = images[modalIndex].src;
+            } else if (e.key === 'Escape') {
+                // Cerrar modal con "Escape"
+                modal.classList.add('hidden');
+            }
+        }
+    });
+});
 
 
 //menu hamburguesa

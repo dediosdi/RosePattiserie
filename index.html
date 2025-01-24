@@ -39,18 +39,29 @@
             </div>
             <div class="photo-album">
                 <div class="album-background">
-                    <img src="images/8e343bf5-e989-4f3c-9ee2-cacaebecc3ea (1).webp" class="album-photo" alt="Plato 1">
-                    <img src="images/2024-06-12.jpg" class="album-photo" alt="Plato 2">
-                    <img src="images/plato3.jpg" class="album-photo" alt="Plato 3">
-                    <img src="images/oreo.webp" class="album-photo" alt="Plato 4">
+                    <button class="nav-button left" onclick="scrollGallery(-1)">❮</button>
+                    <div class="album-gallery">
+                        <img src="images/plato1.jpg" class="album-photo" alt="Plato 1" onclick="expandImage(this)">
+                        <img src="images/plato2.jpg" class="album-photo" alt="Plato 2" onclick="expandImage(this)">
+                        <img src="images/plato3.jpg" class="album-photo" alt="Plato 3" onclick="expandImage(this)">
+                        <img src="images/plato4.jpg" class="album-photo" alt="Plato 4" onclick="expandImage(this)">
+                        <img src="images/plato5.jpg" class="album-photo" alt="Plato 5" onclick="expandImage(this)">
+                        <img src="images/plato6.jpg" class="album-photo" alt="Plato 6" onclick="expandImage(this)">
+                    </div>
+                    <button class="nav-button right" onclick="scrollGallery(1)">❯</button>
                 </div>
+                
+                <!-- Modal para mostrar imágenes expandibles -->
+                <div id="imageModal" class="modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img class="modal-content" id="expandedImg">
+                    <div id="caption"></div>
+                </div>
+                
             </div>
         </div>
     </div>
     
-    <script src="scripts.js"></script>
-</body>
-</html>
 
     <div class="best-dishes-section">
         <div class="best-dishes-container">
@@ -62,81 +73,108 @@
                 <p>Disfruta de los más deliciosos platos preparados con ingredientes frescos y de calidad. ¡Te esperamos!</p>
             </div>
         </div>
-
-        <div class="cards-container">
-            <div class="card">
-                <img src="images/chipa.jpg" alt="Plato 1">
-                <div class="info">
-                    <p class="dish-name">Chipa</p>
-                    <div class="stars">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
+    
+        <!-- Carrusel de miniaturas -->
+        <div class="carousel-container">
+            <button class="arrow left-arrow">&#10094;</button>
+            <div class="carousel-track-container">
+                <div class="carousel-track">
+                    <div class="card">
+                        <img src="images/chipa.jpg" alt="Chipa" class="gallery-img">
+                        <div class="info">
+                            <p class="dish-name">Chipa</p>
+                            <div class="stars">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            </div>
+                        </div>
                     </div>
+                    <div class="card">
+                        <img src="images/medialunas.jpeg" alt="Medialunas" class="gallery-img">
+                        <div class="info">
+                            <p class="dish-name">Medialunas</p>
+                            <div class="stars">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/torta-chiffon-con-frutillas-y-crema-SOQYIXD4EFDLFMITRRHFAQEXEE.avif" alt="Tarta de Frutas" class="gallery-img">
+                        <div class="info">
+                            <p class="dish-name">Tarta de Frutas</p>
+                            <div class="stars">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9734;</span>
+                                <span class="star">&#9734;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/plato5.jpeg" alt="Brownie" class="gallery-img">
+                        <div class="info">
+                            <p class="dish-name">Tarta de Coco</p>
+                            <div class="stars">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/plato5.jpeg" alt="Brownie" class="gallery-img">
+                        <div class="info">
+                            <p class="dish-name">Brownie</p>
+                            <div class="stars">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/plato5.jpeg" alt="Brownie" class="gallery-img">
+                        <div class="info">
+                            <p class="dish-name">Tarta de coco</p>
+                            <div class="stars">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Agregar más tarjetas según sea necesario -->
                 </div>
             </div>
-            <div class="card">
-                <img src="images/medialunas.jpeg" alt="Plato 2">
-                <div class="info">
-                    <p class="dish-name">Medialunas</p>
-                    <div class="stars">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="images/plato3.jpg" alt="Plato 3">
-                <div class="info">
-                    <p class="dish-name">Tarta de Frutas</p>
-                    <div class="stars">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="images/plato5.jpeg" alt="Plato 4">
-                <div class="info">
-                    <p class="dish-name">Brownie</p>
-                    <div class="stars">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                    </div>
-                </div>
-            </div>
+            <button class="arrow right-arrow">&#10095;</button>
         </div>
-        
         <div class="view-more">
             <button>Ver más</button>
         </div>
         </div>
-
-    </div>
-
-    <div class="showcase-section">
-        <div class="showcase-container">
-            <div class="text-section">
-                <h2>Cocinamos con elaboración a la vista</h2>
-                <p>En Rose, cada receta la preparamos con dedicación y transparencia, para que disfrutes lo mejor de nuestro trabajo artesanal. Desde la selección de los ingredientes hasta la elaboración de cada plato, nos aseguramos de ofrecerte productos frescos y sabrosos, hechos con las mejores técnicas de la pastelería tradicional. Veni y viví la experiencia de ver a nuestros profesionales en acción, ¡estamos para sorprenderte con lo mejor de la pastelería en 9 de Julio!</p>
-            </div>
-            <div class="image-section">
-                <img src="images/cocinero.jpg" alt="Pastelero cocinando">
-            </div>
-        </div>
     </div>
     
+    <!-- Modal para mostrar la imagen completa -->
+    <div id="image-modal" class="modal hidden">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+    
+
 
     <div class="order-section">
         <div class="order-container">
@@ -186,7 +224,7 @@
     </div>
 
 
-
+</body>
     <!-- Footer -->
 <footer class="footer">
     <div class="footer-content">
