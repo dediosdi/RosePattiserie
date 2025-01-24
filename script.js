@@ -204,8 +204,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-//menu hamburguesa
-document.getElementById('hamburger').addEventListener('click', function() {
-    var menu = document.getElementById('menu');
-    menu.classList.toggle('open');
+// Toggle Mobile Menu
+// Script para alternar la visibilidad del menú hamburguesa
+// Script para alternar la visibilidad del menú hamburguesa
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+
+menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
 });
+

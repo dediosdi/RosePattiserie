@@ -51,10 +51,18 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: Questrial, serif;
     font-size: small;
+    transition: background-color 0.5s ease;
+
 }
 
+header:hover {
+    background-color: #fce4ec; /* Cambia a un rosa claro */
+}
 header .logo img {
     max-height: 50px;
+}
+.menu-toggle {
+    display: none;
 }
 
 nav {
@@ -68,24 +76,40 @@ nav ul {
     display: flex;
     justify-content: center;
     list-style-type: none;
+
+    
+    
 }
 
 nav ul li {
     margin: 0 15px;
 }
 
-
 nav ul li a {
     text-decoration: none;
     color: #333;
     font-size: 1.2em;
     font-weight: bold;
-    transition: color 0.3s;
+    display: inline-block; /* Permite transformaciones */
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
     color: #552a2a;
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
 }
+
+header .logo img {
+    max-height: 50px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+header .logo img:hover {
+    transform: rotate(10deg) scale(1.1); /* Rota y escala */
+    opacity: 0.9; /* Reduce ligeramente la opacidad */
+}
+
+
 
 .container {
     display: flex;
@@ -730,39 +754,88 @@ nav ul li a:hover {
     transform: scale(1.1); /* Efecto al pasar el mouse sobre los iconos */
 }
 
+
+
+
+
 /* Media Queries para Responsividad */
 
 /* Para pantallas de hasta 768px (móviles y tablets pequeñas) */
-@media screen and (max-width: 768px) {
-    header {
-        padding: 10px 20px; /* Reducimos el padding */
-        font-size: 0.9em; /* Reducimos el tamaño de la fuente */
-    }
+@media (max-width: 768px) {
+    nav {
+        display: none;  /* Esconde el menú por defecto en móviles */
+        flex-direction: column;  /* Los elementos se muestran en columna */
+        position: absolute;
+        top: 94px;  /* Ajusta según el tamaño de tu header */
+        right: 0;  /* Coloca el menú al lado derecho */
+        background-color: #fce4ec;  /* Color de fondo del menú */
+        width: 140px;  /* Ajusta el ancho del menú si es necesario */
+        padding-left: 10px;  /* Ajuste adicional para evitar que el menú toque el borde */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        z-index: 10;  /* Asegura que el menú se muestre por encima del contenido */
 
-    .logo img {
-        max-height: 40px; /* Reducimos el tamaño del logo */
     }
-
+    
     nav ul {
-        flex-direction: column; /* Cambiamos la dirección de los elementos en la barra de navegación */
-        align-items: center;
-        margin-top: 10px; /* Añadimos un margen arriba */
+        display: flex;
+        flex-direction: column;  
+        width: 100%;  /* Ocupa el ancho completo */
+        padding: 0;
+        margin: 0;
+
     }
 
     nav ul li {
-        margin: 5px 0; /* Reducimos el espacio entre los enlaces */
+        text-align: center;  
+        padding: 10px;
     }
+
+    .menu-toggle.active + nav {
+        display: flex;  /* Muestra el menú cuando el botón está activo */
+    }
+
+    /* Estilo para el botón de menú hamburguesa */
+    .menu-toggle {
+        background: none;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        color: #333;
+        display: block; /* Muestra el botón en pantallas pequeñas */
+
+    }
+
+
+
+
 
     .container {
         flex-direction: column; /* Ponemos los elementos de la página en una sola columna */
         padding: 20px;
+        
         height: auto; /* Hacemos que el contenedor no ocupe toda la altura de la pantalla */
     }
 
     .left-column, .right-column {
         max-width: 100%; /* Hacemos que ambas columnas ocupen el 100% del ancho */
         flex: 1;
-        margin-bottom: 20px; /* Agregamos espacio entre las columnas */
+        margin-bottom: -90px; /* Agregamos espacio entre las columnas */
+
+    }
+
+    .right-column {
+        display: flex;
+        justify-content: center;  /* Centra los elementos horizontalmente */
+        align-items: center;      /* Centra los elementos verticalmente */
+        width: 100%;              /* Asegura que ocupe todo el ancho disponible */
+        padding: 20px;            /* Añade un poco de espacio alrededor */
+    }
+
+    /* Si los elementos dentro de la right-section son imágenes, puedes aplicar esto también */
+    .right-section img {
+        max-width: 100%;           /* Asegura que las imágenes no se salgan del contenedor */
+        height: auto;              /* Mantiene la relación de aspecto de las imágenes */
     }
 
     .left-column h1 {
@@ -823,42 +896,5 @@ nav ul li a:hover {
         flex-direction: column; /* Ponemos el footer en una columna */
         align-items: center;
         text-align: center;
-    }
-}
-
-/* Para pantallas de hasta 1024px (tabletas grandes y pantallas de tamaño intermedio) */
-@media screen and (max-width: 1024px) {
-    header {
-        padding: 15px 30px;
-        font-size: 1em;
-           
-    }
-
-    nav ul {
-        justify-content: space-between;
-        flex-direction: row;
-    }
-
-    .container {
-        padding: 20px;
-        flex-direction: row;
-    }
-
-    .left-column, .right-column {
-        max-width: 50%;
-        flex: 1;
-    }
-
-    .photo-album {
-        bottom: 15%; /* Ajustamos la posición para tabletas */
-    }
-
-    .order-container {
-        padding: 40px 30px;
-    }
-
-    .footer-content {
-        flex-direction: row; /* Ajustamos el footer para pantallas más grandes */
-        justify-content: space-between;
     }
 }
